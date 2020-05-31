@@ -16,7 +16,6 @@ import com.food.productsitemservice.model.Item;
  *
  */
 @Service("serviceFeign")
-@Primary //set this service is principal
 public class ItemServiceFeign implements ItemService {
 
 	@Autowired

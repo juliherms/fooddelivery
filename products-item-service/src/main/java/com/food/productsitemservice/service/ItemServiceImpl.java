@@ -32,7 +32,7 @@ public class ItemServiceImpl implements ItemService {
 	public List<Item> findAll(){
 		
 		//call microservice products with restTemplate
-		List<Product> products = Arrays.asList(clientRest.getForObject("http://localhost:8001/list",Product[].class));
+		List<Product> products = Arrays.asList(clientRest.getForObject("http://product-service/list",Product[].class));
 		//convert products to item
 		return products.stream().map(p -> new Item(p,1)).collect(Collectors.toList());
 	}
@@ -51,7 +51,7 @@ public class ItemServiceImpl implements ItemService {
 		pathVariables.put("id",id.toString());
 		
 		//call rest endpoint
-		Product product = clientRest.getForObject("http://localhost:8001/view/{id}", Product.class,pathVariables);
+		Product product = clientRest.getForObject("http://product-service/view/{id}", Product.class,pathVariables);
 		
 		return new Item(product,quantity);
 	}
