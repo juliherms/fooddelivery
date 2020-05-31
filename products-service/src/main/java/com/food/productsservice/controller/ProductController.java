@@ -33,10 +33,16 @@ public class ProductController {
 	 * @throws Exception 
 	 */
 	@GetMapping("/view/{id}")
-	public Product details(@PathVariable Long id) throws Exception {
+	public Product details(@PathVariable Long id){
+	
+		/*
+		try {
+			Thread.sleep(2000L);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
 		
-		throw new Exception("error");
-		
-		//return service.findById(id);
+		return service.findById(id);
 	}
 }
