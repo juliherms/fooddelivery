@@ -14,7 +14,7 @@ import com.food.productsitemservice.model.Product;
  * @author j.a.vasconcelos
  *
  */
-@FeignClient(name = "product-service", url = "localhost:8001")
+@FeignClient(name = "product-service")
 public interface ProductClientRest {
 
 	/**
