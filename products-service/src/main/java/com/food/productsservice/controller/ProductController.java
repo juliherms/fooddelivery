@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.food.productsservice.model.Product;
 import com.food.productsservice.service.ProductService;
 
+/**
+ * Class responsible to expose product endpoint
+ * @author j.a.vasconcelos
+ *
+ */
 @RestController
 public class ProductController {
 
@@ -26,7 +31,7 @@ public class ProductController {
 	 * @param id
 	 * @return
 	 */
-	@GetMapping("/list/{id}")
+	@GetMapping("/view/{id}")
 	public Product details(@PathVariable Long id) {
 		return service.findById(id);
 	}
