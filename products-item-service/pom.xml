@@ -47,6 +47,13 @@
 				spring-cloud-starter-netflix-eureka-client
 			</artifactId>
 		</dependency>
+		<!-- hystrix -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>
+				spring-cloud-starter-netflix-hystrix
+			</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>

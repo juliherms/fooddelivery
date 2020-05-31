@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.food.productsitemservice.model.Item;
 import com.food.productsitemservice.model.Product;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 /**
  * Class responsible about service items.

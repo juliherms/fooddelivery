@@ -30,9 +30,13 @@ public class ProductController {
 	 * Responsible to view product by id
 	 * @param id
 	 * @return
+	 * @throws Exception 
 	 */
 	@GetMapping("/view/{id}")
-	public Product details(@PathVariable Long id) {
-		return service.findById(id);
+	public Product details(@PathVariable Long id) throws Exception {
+		
+		throw new Exception("error");
+		
+		//return service.findById(id);
 	}
 }
