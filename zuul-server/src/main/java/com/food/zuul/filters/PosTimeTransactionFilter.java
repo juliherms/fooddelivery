@@ -10,6 +10,12 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 
+/**
+ * This class responsible to process request filter
+ * 
+ * @author j.a.vasconcelos
+ *
+ */
 @Component
 public class PosTimeTransactionFilter extends ZuulFilter {
 
@@ -31,16 +37,16 @@ public class PosTimeTransactionFilter extends ZuulFilter {
 
 		RequestContext ctx = RequestContext.getCurrentContext();
 		HttpServletRequest request = ctx.getRequest();
-		
+
 		log.info("execute post filter");
 
 		Long initialTime = (Long) request.getAttribute("initialTime");
 		Long finalTime = System.currentTimeMillis();
 		Long diffTime = finalTime - initialTime;
-		
-		log.info(String.format("diff time in seconds %s",diffTime.doubleValue()/1000.00));
-		log.info(String.format("diff time in mileseg %s",diffTime));
-		
+
+		log.info(String.format("diff time in seconds %s", diffTime.doubleValue() / 1000.00));
+		log.info(String.format("diff time in milesecons %s", diffTime));
+
 		return null;
 	}
 

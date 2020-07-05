@@ -24,6 +24,7 @@ public class ProductService {
 
 	/**
 	 * Return all products in the database
+	 * 
 	 * @return
 	 */
 	@Transactional(readOnly = true)
@@ -31,8 +32,35 @@ public class ProductService {
 		return (List<Product>) repo.findAll();
 	}
 
+	/**
+	 * Return product by id
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@Transactional(readOnly = true)
 	public Product findById(Long id) {
 		return repo.findById(id).orElse(null);
+	}
+
+	/**
+	 * Save product
+	 * 
+	 * @param p
+	 * @return
+	 */
+	@Transactional
+	public Product save(Product p) {
+		return repo.save(p);
+	}
+
+	/**
+	 * Remove product
+	 * 
+	 * @param id
+	 */
+	@Transactional
+	public void remove(Long id) {
+		repo.deleteById(id);
 	}
 }

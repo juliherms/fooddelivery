@@ -55,8 +55,7 @@ public class PreTimeTransactionFilter extends ZuulFilter {
 
 	@Override
 	public int filterOrder() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 
 }
