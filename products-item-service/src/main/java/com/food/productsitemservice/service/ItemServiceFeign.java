@@ -14,6 +14,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 /**
  * Implements ItemService with feign
+ * 
  * @author j.a.vasconcelos
  *
  */
@@ -35,30 +36,47 @@ public class ItemServiceFeign implements ItemService {
 	 * Fallback: fallbackMethod
 	 */
 	@Override
-	@HystrixCommand(fallbackMethod="fallbackMethod")
+	@HystrixCommand(fallbackMethod = "fallbackMethod")
 	public Item findById(Long id, Integer quantity) {
 
 		return new Item(clientFeign.details(id), quantity);
 	}
-	
+
 	/**
-	 * this method represents circuit breaker
-	 * TODO: implement alternative in kafka or rabbitMQ.
+	 * this method represents circuit breaker TODO: implement alternative in kafka
+	 * or rabbitMQ.
+	 * 
 	 * @param id
 	 * @param quantity
 	 * @return
 	 */
 	public Item fallbackMethod(Long id, Integer quantity) {
-		
+
 		Item item = new Item();
 		Product product = new Product();
-		
+
 		item.setQuantity(quantity);
 		product.setId(id);
 		product.setName("Coca Cola");
 		product.setPrice(BigDecimal.TEN);
 		item.setProduct(product);
-		
+
 		return item;
+	}
+
+	@Override
+	public Product saveProduct(Product product) {
+		return clientFeign.create(product);
+	}
+
+	@Override
+	public Product updateProduct(Product product, Long id) {
+		return clientFeign.update(product, id);
+	}
+
+	@Override
+	public void deleteProduct(Long id) {
+		clientFeign.delete(id);
+
 	}
 }
