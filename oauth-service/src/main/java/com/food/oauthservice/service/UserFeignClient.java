@@ -20,7 +20,7 @@ public interface UserFeignClient {
 	 * @param usernama
 	 * @return
 	 */
-	@GetMapping("/users/findUsername")
+	@GetMapping("/findUsername")
 	public User findByUsername(@RequestParam String username);
 
 }

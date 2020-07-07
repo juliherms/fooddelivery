@@ -17,11 +17,12 @@ import com.food.oauthservice.dto.User;
 
 /**
  * This class responsible to provide authenticate in the system
+ * 
  * @author j.a.vasconcelos
  *
  */
 @Service
-public class UserService implements UserDetailsService {
+public class UserService implements UserDetailsService, IUserService {
 
 	@Autowired
 	private UserFeignClient client;
@@ -49,6 +50,11 @@ public class UserService implements UserDetailsService {
 
 		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
 				user.getEnabled(), true, true, true, authorities);
+	}
+
+	@Override
+	public User findByUsername(String username) {
+		return client.findByUsername(username);
 	}
 
 }
