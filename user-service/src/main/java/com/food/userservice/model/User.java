@@ -22,7 +22,7 @@ import javax.persistence.UniqueConstraint;
  *
  */
 @Entity
-@Table(name = "usuario")
+@Table(name = "user")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
