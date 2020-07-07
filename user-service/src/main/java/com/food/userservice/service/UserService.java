@@ -62,5 +62,14 @@ public class UserService {
 	public void remove(Long id) {
 		repo.deleteById(id);
 	}
+	
+	/**
+	 * Method responsible to get user by username
+	 * @param username
+	 * @return
+	 */
+	public User findByUsername(String username) {
+		return repo.getByUsername(username);
+	}
 
 }
